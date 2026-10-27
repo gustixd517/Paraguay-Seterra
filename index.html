@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paraguay: departamentos y capitales — Juego de geografía</title>
+  <meta name="description" content="Aprendé los 17 departamentos de Paraguay y sus capitales con un mapa de límites reales. Tres modos de juego, mapa de estudio y récords locales.">
+  <meta name="theme-color" content="#f4efe4">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23f4efe4'/%3E%3Crect x='12' y='14' width='40' height='12' fill='%23d83a2e'/%3E%3Crect x='12' y='26' width='40' height='12' fill='%23fffdf8'/%3E%3Crect x='12' y='38' width='40' height='12' fill='%231f4f9a'/%3E%3Ccircle cx='32' cy='32' r='5' fill='%23e0a92e' stroke='%2318261f' stroke-width='1.5'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-screen="home">
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+
+  <div class="page">
+    <header class="site-header">
+      <a class="brand" href="#/" aria-label="Paraguay, volver al inicio">
+        <span class="brand-flag" aria-hidden="true">
+          <svg viewBox="0 0 32 22" role="presentation">
+            <rect width="32" height="7.33" fill="#d83a2e"/>
+            <rect y="7.33" width="32" height="7.33" fill="#fffdf8"/>
+            <rect y="14.66" width="32" height="7.34" fill="#1f4f9a"/>
+            <circle cx="16" cy="11" r="3" fill="#e0a92e" stroke="#18261f" stroke-width="1"/>
+          </svg>
+        </span>
+        <span class="brand-name">Paraguay</span>
+        <span class="brand-tag">Geografía</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Navegación principal">
+        <a href="#/" data-nav="home">Inicio</a>
+        <a href="#/estudiar" data-nav="study">Mapa de estudio</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="text-button" id="help-button" type="button">Cómo jugar</button>
+        <button class="icon-button" id="sound-toggle" type="button" aria-pressed="true" aria-label="Desactivar sonido">
+          <svg class="icon-sound-on" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 9.5v5h3.5L12 18V6L7.5 9.5H4Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+            <path d="M15.5 9a4.2 4.2 0 0 1 0 6M18 6.7a7.6 7.6 0 0 1 0 10.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          </svg>
+          <svg class="icon-sound-off" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 9.5v5h3.5L12 18V6L7.5 9.5H4Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+            <path d="m16 9.5 5 5M21 9.5l-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- ================= INICIO ================= -->
+      <section class="screen screen--home" id="screen-home" data-screen="home">
+        <div class="home-hero">
+          <div class="hero-copy">
+            <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"></span> Atlas interactivo · Paraguay</p>
+            <h1>Los 17 departamentos<br><em>en su lugar.</em></h1>
+            <p class="hero-lede">Aprendé los departamentos de Paraguay y sus capitales con un mapa de <strong>límites reales</strong>. Sin formas inventadas y sin deformar el país.</p>
+            <div class="hero-actions">
+              <button class="btn btn--primary" type="button" data-start-mode="departamentos">
+                Jugar ahora
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <a class="btn btn--ghost" href="#/estudiar">Explorar el mapa</a>
+            </div>
+            <dl class="hero-facts">
+              <div><dt>17</dt><dd>departamentos</dd></div>
+              <div><dt>17</dt><dd>capitales</dd></div>
+              <div><dt>2</dt><dd>regiones</dd></div>
+            </dl>
+          </div>
+
+          <div class="map-card map-card--hero">
+            <div class="map-toolbar">
+              <span class="map-card__label">Mapa de Paraguay</span>
+              <span class="map-card__note">Límites reales · Albers</span>
+            </div>
+            <div class="map-stage" id="home-map"></div>
+            <div class="map-caption" id="home-caption" aria-live="polite">
+              <span class="map-caption__dot" aria-hidden="true"></span>
+              Pasá el cursor para explorar.
+            </div>
+          </div>
+        </div>
+
+        <section class="modes-section" aria-labelledby="modes-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Elegí un desafío</p>
+              <h2 id="modes-title">Tres formas de recorrer el mapa</h2>
+            </div>
+            <p class="section-note">Cada partida tiene 17 preguntas. Si fallás, la volvés a ver antes del final.</p>
+          </div>
+
+          <div class="mode-grid">
+            <button class="mode-card" type="button" data-start-mode="departamentos">
+              <span class="mode-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s6-5.2 6-10.4A6 6 0 0 0 6 10.6C6 15.8 12 21 12 21Z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10.5" r="2.2" stroke="currentColor" stroke-width="1.6"/></svg>
+              </span>
+              <span class="mode-card__kicker">Modo 01 · Mapa</span>
+              <span class="mode-card__title">Ubica el departamento</span>
+              <span class="mode-card__text">Te damos el nombre y marcás la región correcta en el mapa.</span>
+              <span class="mode-card__footer">
+                <span class="mode-card__best" data-best="departamentos">Aún sin récord</span>
+                <span class="mode-card__arrow" aria-hidden="true">→</span>
+              </span>
+            </button>
+
+            <button class="mode-card" type="button" data-start-mode="capitales">
+              <span class="mode-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.6"/><path d="m15.5 8.5-2 5-5 2 2-5 5-2Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="mode-card__kicker">Modo 02 · Mapa</span>
+              <span class="mode-card__title">Ubica la capital</span>
+              <span class="mode-card__text">Te damos una capital y marcás el departamento al que pertenece.</span>
+              <span class="mode-card__footer">
+                <span class="mode-card__best" data-best="capitales">Aún sin récord</span>
+                <span class="mode-card__arrow" aria-hidden="true">→</span>
+              </span>
+            </button>
+
+            <button class="mode-card" type="button" data-start-mode="eleccion">
+              <span class="mode-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M5 7h9M5 12h6M5 17h9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="m15 15 2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="mode-card__kicker">Modo 03 · Opciones</span>
+              <span class="mode-card__title">Elige la capital</span>
+              <span class="mode-card__text">Se ilumina un departamento y elegís su capital entre cuatro.</span>
+              <span class="mode-card__footer">
+                <span class="mode-card__best" data-best="eleccion">Aún sin récord</span>
+                <span class="mode-card__arrow" aria-hidden="true">→</span>
+              </span>
+            </button>
+          </div>
+
+          <a class="study-banner" href="#/estudiar">
+            <span class="study-banner__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5V5.5Z" stroke="currentColor" stroke-width="1.6"/><path d="M4 18.5A2.5 2.5 0 0 1 6.5 16H20" stroke="currentColor" stroke-width="1.6"/></svg>
+            </span>
+            <span class="study-banner__copy">
+              <strong>¿Preferís estudiar primero?</strong>
+              <span>Recorré el mapa con nombres, números, capitales y datos de cada departamento.</span>
+            </span>
+            <span class="study-banner__arrow" aria-hidden="true">→</span>
+          </a>
+        </section>
+      </section>
+
+      <!-- ================= ESTUDIO ================= -->
+      <section class="screen screen--study" id="screen-study" data-screen="study" hidden>
+        <div class="study-head">
+          <div>
+            <p class="eyebrow">Mapa de estudio</p>
+            <h1>Los 17 departamentos<br><em>y sus capitales.</em></h1>
+            <p class="lede">Tocá una región del mapa o una fila de la lista para ver su número, su capital y sus datos. El mapa usa límites reales y una proyección que no deforma el país.</p>
+          </div>
+          <div class="study-actions">
+            <label class="switch">
+              <input type="checkbox" id="show-capitals" checked>
+              <span class="switch__track" aria-hidden="true"></span>
+              <span class="switch__label">Ver capitales</span>
+            </label>
+            <button class="btn btn--primary btn--small" type="button" data-start-mode="departamentos">Ponerme a prueba</button>
+          </div>
+        </div>
+
+        <div class="study-layout">
+          <div class="map-card map-card--study">
+            <div class="map-toolbar">
+              <span class="map-card__label">Mapa político</span>
+              <span class="map-card__note">Límites reales · Proyección Albers</span>
+            </div>
+            <div class="map-stage map-stage--study" id="study-map"></div>
+            <p class="map-help">Tocá un departamento para ver su ficha. También podés elegirlo en la lista.</p>
+          </div>
+
+          <aside class="study-panel" aria-label="Información de los departamentos">
+            <div class="detail-card" id="study-detail" aria-live="polite"></div>
+
+            <div class="region-block">
+              <div class="region-head">
+                <h2>Región Occidental</h2>
+                <span>Chaco · 3</span>
+              </div>
+              <div class="study-list" id="study-list-occidental"></div>
+            </div>
+
+            <div class="region-block">
+              <div class="region-head">
+                <h2>Región Oriental</h2>
+                <span>14 departamentos</span>
+              </div>
+              <div class="study-list" id="study-list-oriental"></div>
+            </div>
+
+            <p class="study-asuncion-note"><strong>Asunción</strong> es la capital del país y un distrito autónomo: no forma parte de los 17 departamentos y no tiene número departamental.</p>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ================= JUEGO ================= -->
+      <section class="screen screen--game" id="screen-game" data-screen="game" hidden>
+        <div class="game-layout">
+          <section class="game-panel" aria-labelledby="game-prompt">
+            <div class="game-top">
+              <a class="text-button text-button--back" href="#/">
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 8H4M7.5 4.5 4 8l3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Salir
+              </a>
+              <span class="mode-pill" id="game-mode-label">Departamentos</span>
+              <span class="timer" id="game-timer" role="timer" aria-label="Tiempo transcurrido">00:00</span>
+            </div>
+
+            <div class="progress" aria-hidden="true">
+              <div class="progress__labels"><span>Progreso</span><span id="game-progress-label">0 / 17</span></div>
+              <div class="progress__track"><span id="game-progress-bar"></span></div>
+            </div>
+
+            <div class="game-body">
+              <div class="question" id="game-question" aria-live="polite">
+                <p class="eyebrow" id="game-prompt-kind">Encuentra el departamento</p>
+                <h1 id="game-prompt">—</h1>
+                <p class="question__hint" id="game-hint">Hacé clic en la región correcta.</p>
+              </div>
+
+              <div class="choice-options" id="choice-options" hidden></div>
+
+              <div class="feedback" id="game-feedback" role="status" aria-live="assertive" hidden></div>
+            </div>
+
+            <div class="game-guide">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 20a8 8 0 1 0-8-8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                <path d="M4 4v5h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <p><strong>Completá los 17 departamentos.</strong> Si fallás, la pregunta vuelve a aparecer.</p>
+            </div>
+
+            <div class="game-meta">
+              <span><strong id="game-errors">0</strong> <span id="game-errors-label">errores</span></span>
+              <span><strong id="game-mastered">0</strong> <span id="game-mastered-label">dominados</span></span>
+            </div>
+          </section>
+
+          <div class="game-map-wrap">
+            <div class="game-map-head">
+              <span class="map-card__label">Paraguay</span>
+              <span class="map-card__note" id="game-map-note">17 departamentos</span>
+            </div>
+            <div class="map-stage map-stage--game" id="game-map"></div>
+            <p class="map-help map-help--game" id="game-map-help">Hacé clic en el departamento correcto. También podés usar <span class="kbd">Tab</span> y <span class="kbd">Enter</span>.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= RESULTADOS ================= -->
+      <section class="screen screen--results" id="screen-results" data-screen="results" hidden>
+        <div class="results-card">
+          <div class="results-copy">
+            <p class="eyebrow">Partida completada</p>
+            <h1 id="results-title">¡Recorriste<br><em>todo el mapa!</em></h1>
+            <p class="results-subtitle" id="results-subtitle">Completaste los 17 departamentos.</p>
+
+            <div class="results-stats">
+              <div class="result-stat"><span id="result-time">00:00</span><small>Tiempo</small></div>
+              <div class="result-stat"><span id="result-firsttry">17/17</span><small>A la primera</small></div>
+              <div class="result-stat"><span id="result-errors">0</span><small>Errores</small></div>
+              <div class="result-stat"><span id="result-accuracy">100%</span><small>Precisión</small></div>
+            </div>
+
+            <p class="record-badge" id="result-record" hidden></p>
+
+            <div class="results-actions">
+              <button class="btn btn--primary" type="button" id="result-replay">Jugar de nuevo</button>
+              <a class="btn btn--ghost" href="#/">Cambiar de modo</a>
+              <a class="btn btn--ghost" href="#/estudiar">Estudiar el mapa</a>
+            </div>
+
+            <div class="missed-wrap" id="result-missed-wrap" hidden>
+              <h2>Para repasar</h2>
+              <ul class="missed-list" id="result-missed"></ul>
+            </div>
+          </div>
+
+          <div class="results-map" id="results-map" aria-hidden="true"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Hecho para aprender la geografía del Paraguay.</p>
+      <p class="footer-meta">
+        Mapa: <a href="https://www.geoboundaries.org/" target="_blank" rel="noreferrer">geoBoundaries</a> (CC BY 4.0), fuente DGEEC 2012 · Proyección Albers.
+        Capitales y superficies: <a href="https://es.wikipedia.org/wiki/Departamentos_de_Paraguay" target="_blank" rel="noreferrer">Wikipedia</a>.
+      </p>
+    </footer>
+  </div>
+
+  <dialog class="help-dialog" id="help-dialog" aria-labelledby="help-title">
+    <div class="help-head">
+      <h2 id="help-title">Cómo jugar</h2>
+      <button class="icon-button" type="button" data-close-help aria-label="Cerrar ayuda">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="help-body">
+      <p>Hay <strong>17 departamentos</strong> y cada partida los recorre todos. Si te equivocás, el departamento vuelve a aparecer unas preguntas después: la idea es que termines dominando el mapa, no que aciertes de casualidad.</p>
+      <h3>Los tres modos</h3>
+      <ul>
+        <li><strong>Ubica el departamento:</strong> te damos el nombre y hacés clic en el mapa.</li>
+        <li><strong>Ubica la capital:</strong> te damos una capital y marcás su departamento.</li>
+        <li><strong>Elige la capital:</strong> el mapa ilumina un departamento y elegís entre cuatro capitales.</li>
+      </ul>
+      <h3>Atajos</h3>
+      <p><span class="kbd">Tab</span> recorre las regiones y las opciones. <span class="kbd">Enter</span> o <span class="kbd">Espacio</span> confirman. En el modo de opciones también podés usar <span class="kbd">1</span> a <span class="kbd">4</span>.</p>
+      <h3>Números de departamento</h3>
+      <p>Se usa la numeración nacional del <strong>1 al 17</strong>. Termina así: 15 Presidente Hayes, <strong>16 Boquerón</strong> y <strong>17 Alto Paraguay</strong>. No es lo mismo que los códigos ISO 3166-2, que para Boquerón y Alto Paraguay usan PY-19 y PY-16. Asunción no tiene número porque es un distrito capital.</p>
+      <h3>Sobre el mapa</h3>
+      <p>Los límites provienen de geoBoundaries (CC BY 4.0, datos de la DGEEC de Paraguay) y se proyectan con Albers Equal Area y una escala única. No hay formas dibujadas a mano ni estiramientos: el mapa conserva la proporción real del país.</p>
+      <p><strong>Asunción</strong> aparece como distrito capital, pero no se pregunta porque no es un departamento.</p>
+      <p class="help-credits">Capitales y superficies: Wikipedia, censo 2022. Récords guardados solo en este navegador.</p>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+  <div class="map-tooltip" id="map-tooltip" role="status" hidden></div>
+
+  <script src="game.js"></script>
+  <script src="map-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
